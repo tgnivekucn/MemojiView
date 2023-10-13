@@ -9,8 +9,11 @@ import UIKit
 class MemojiView: UIImageView {
     private let memojiView = UIImageView(frame: .zero)
     private let textView = UITextView()
-    private let size: Int = 300
+    private let button = UIButton()
+    private let editImageView = UIImageView()
+    private let size: Double = 300
     private let minimumTextViewSize = Double(50)
+    private let editIconSize = Double(50)
     var imageChanged: ((UIImage) -> Void)? = nil
     
     override init(frame: CGRect) {
@@ -33,6 +36,10 @@ class MemojiView: UIImageView {
                                 y: size - minimumTextViewSize,
                                 width: minimumTextViewSize,
                                 height: minimumTextViewSize)
+        editImageView.frame = CGRect(x: size - editIconSize,
+                                y: size - editIconSize,
+                                width: editIconSize,
+                                height: editIconSize)
     }
     
     private func setupUI() {
@@ -41,15 +48,29 @@ class MemojiView: UIImageView {
         memojiView.frame = CGRect(x: 0, y: 0, width: size, height: size)
         memojiView.backgroundColor = .yellow
         self.addSubview(memojiView)
-        
-        textView.frame = CGRect(x: size - 50, y: size - 50, width: 50, height: 50)
+
+        textView.frame = CGRect(x: size - minimumTextViewSize,
+                                y: size - minimumTextViewSize,
+                                width: minimumTextViewSize,
+                                height: minimumTextViewSize)
         textView.allowsEditingTextAttributes = true
         textView.delegate = self
         textView.tintColor = .clear
         textView.backgroundColor = .clear
         self.addSubview(textView)
+
+        let edgeInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
+        editImageView.image = UIImage(systemName: "pencil")?.withInset(edgeInset)
+        editImageView.contentMode = .scaleAspectFit
+        editImageView.frame = CGRect(x: size - editIconSize,
+                                     y: size - editIconSize,
+                                     width: editIconSize,
+                                     height: editIconSize)
+        editImageView.backgroundColor = .systemPink
+        editImageView.layer.cornerRadius = 25
+        self.addSubview(editImageView)
     }
-    
+
     private func getTextAttachments(from textView: UITextView) -> [NSTextAttachment] {
         var attachments: [NSTextAttachment] = []
         
@@ -83,5 +104,18 @@ extension MemojiView: UITextViewDelegate {
         DispatchQueue.main.async {
             textView.text = ""
         }
+    }
+}
+
+// Ref: https://stackoverflow.com/questions/32304349/insets-to-uiimageview
+extension UIImage {
+    func withInset(_ insets: UIEdgeInsets) -> UIImage? {
+        let cgSize = CGSize(width: self.size.width + insets.left * self.scale + insets.right * self.scale,
+                            height: self.size.height + insets.top * self.scale + insets.bottom * self.scale)
+        UIGraphicsBeginImageContextWithOptions(cgSize, false, self.scale)
+        defer { UIGraphicsEndImageContext() }
+        let origin = CGPoint(x: insets.left * self.scale, y: insets.top * self.scale)
+        self.draw(at: origin)
+        return UIGraphicsGetImageFromCurrentImageContext()?.withRenderingMode(self.renderingMode)
     }
 }
