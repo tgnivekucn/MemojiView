@@ -13,6 +13,7 @@
 		2F82BB482AD92F8900CAB413 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F82BB462AD92F8900CAB413 /* Main.storyboard */; };
 		2F82BB4A2AD92F8A00CAB413 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2F82BB492AD92F8A00CAB413 /* Assets.xcassets */; };
 		2F82BB4D2AD92F8A00CAB413 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2F82BB4B2AD92F8A00CAB413 /* LaunchScreen.storyboard */; };
+		2F82BB552AD92FC000CAB413 /* MemojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F82BB542AD92FC000CAB413 /* MemojiView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2F82BB492AD92F8A00CAB413 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2F82BB4C2AD92F8A00CAB413 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2F82BB4E2AD92F8A00CAB413 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2F82BB542AD92FC000CAB413 /* MemojiView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemojiView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +61,7 @@
 				2F82BB402AD92F8900CAB413 /* AppDelegate.swift */,
 				2F82BB422AD92F8900CAB413 /* SceneDelegate.swift */,
 				2F82BB442AD92F8900CAB413 /* ViewController.swift */,
+				2F82BB542AD92FC000CAB413 /* MemojiView.swift */,
 				2F82BB462AD92F8900CAB413 /* Main.storyboard */,
 				2F82BB492AD92F8A00CAB413 /* Assets.xcassets */,
 				2F82BB4B2AD92F8A00CAB413 /* LaunchScreen.storyboard */,
@@ -141,6 +144,7 @@
 				2F82BB452AD92F8900CAB413 /* ViewController.swift in Sources */,
 				2F82BB412AD92F8900CAB413 /* AppDelegate.swift in Sources */,
 				2F82BB432AD92F8900CAB413 /* SceneDelegate.swift in Sources */,
+				2F82BB552AD92FC000CAB413 /* MemojiView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +296,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JDR9D4JDV9;
+				DEVELOPMENT_TEAM = MURH4SN58F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MemojiView/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -300,6 +304,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -320,7 +325,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = JDR9D4JDV9;
+				DEVELOPMENT_TEAM = MURH4SN58F;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = MemojiView/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -328,6 +333,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
