@@ -11,7 +11,7 @@ class MemojiView: UIImageView {
     private let textView = UITextView()
     private let button = UIButton()
     private let editImageView = UIImageView()
-    private let size: Double = 300
+    private let size = Double(300)
     private let minimumTextViewSize = Double(50)
     private let editIconSize = Double(50)
     var imageChanged: ((UIImage) -> Void)? = nil
@@ -48,7 +48,7 @@ class MemojiView: UIImageView {
         memojiView.frame = CGRect(x: 0, y: 0, width: size, height: size)
         memojiView.backgroundColor = .yellow
         self.addSubview(memojiView)
-
+        
         textView.frame = CGRect(x: size - minimumTextViewSize,
                                 y: size - minimumTextViewSize,
                                 width: minimumTextViewSize,
@@ -58,11 +58,11 @@ class MemojiView: UIImageView {
         textView.tintColor = .clear
         textView.backgroundColor = .clear
         self.addSubview(textView)
-
+        
         let edgeInset = UIEdgeInsets(top: 1, left: 1, bottom: 1, right: 1)
         editImageView.image = UIImage(systemName: "pencil")?.withInset(edgeInset)
         editImageView.contentMode = .scaleAspectFit
-        editImageView.frame = CGRect(x: size - editIconSize,
+        editImageView.frame = CGRect(x: size - editIconSize, 
                                      y: size - editIconSize,
                                      width: editIconSize,
                                      height: editIconSize)
@@ -86,9 +86,29 @@ class MemojiView: UIImageView {
         }
         return attachments
     }
+
+    private func bounceImageView(view: UIImageView) {
+        // Initial scale down to simulate a 'drop' from original size
+        view.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+
+        // Animate to slightly larger than original size
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 6.0, options: [], animations: {
+            view.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
+        }, completion: { finished in
+            // Animate back to original size
+            UIView.animate(withDuration: 0.3) {
+                view.transform = CGAffineTransform.identity
+            }
+        })
+    }
 }
 
 extension MemojiView: UITextViewDelegate {
+    func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
+        bounceImageView(view: self.editImageView)
+        return true
+    }
+
     func textViewDidChange(_ textView: UITextView) {
         let attachments = getTextAttachments(from: textView)
         for attachment in attachments {

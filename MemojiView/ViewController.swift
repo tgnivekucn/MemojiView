@@ -17,8 +17,16 @@ class ViewController: UIViewController {
         self.view.addSubview(memojiView)
         memojiView.imageChanged = { image in
             print("got it")
-            self.startResizeImageViewAnimation(imageView: self.memojiView)
+//            self.startResizeImageViewAnimation(imageView: self.memojiView)
         }
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(self.handleTap(_:)))
+        self.view.addGestureRecognizer(tap)
+    }
+
+    @objc func handleTap(_ sender: UITapGestureRecognizer? = nil) {
+        // handling code
+        view.endEditing(true)
     }
 
     private func startResizeImageViewAnimation(imageView: UIImageView) {
